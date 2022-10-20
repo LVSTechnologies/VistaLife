@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effect="clr-namespace:VistaLifeSampleApp.Effects"
+    x:Class="VistaLifeSampleApp.Views.LoginPage">
+    <ContentPage.Content>
+
+        <StackLayout Margin="20" VerticalOptions="Center">
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="6" VerticalOptions="Start">
+            <Label Text="Users List Sample App" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+        </Frame>
+            <Label Text="Please enter Login Credentials" FontSize="Title" Padding="10"/>
+        <Entry Placeholder="Enter User Name" Margin="0,0,0,10"
+               Text="{Binding UserName, Mode=TwoWay}"
+               VerticalOptions="End"
+               >
+            <Entry.Effects>
+                <effect:EntryBorderEffect/>
+                </Entry.Effects>
+        </Entry>
+
+        <Entry Placeholder="Enter Password" Margin="0,0,0,10"
+               Text="{Binding Password, Mode=TwoWay}"
+               VerticalOptions="End"
+               IsPassword="True">
+            <Entry.Effects>
+                <effect:EntryBorderEffect />
+            </Entry.Effects>
+        </Entry>
+
+        <Button 
+                Text="Login" 
+                TextColor="White"
+                BackgroundColor="Blue"
+                CornerRadius="6"
+                VerticalOptions="Center"
+                Command="{Binding LoginCommand}" />
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="VistaLifeSampleApp.Views.ListingPage">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="20">
+            <CollectionView x:Name="collectionView"
+                ItemSizingStrategy="MeasureFirstItem"
+                ItemsSource="{Binding Users}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedUser}"
+                SelectionChangedCommand="{Binding SelectedUserCommand}"
+                VerticalOptions="StartAndExpand"
+                >
+                <CollectionView.Header>
+                    <StackLayout Margin="5">
+                        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="6" VerticalOptions="Start">
+                            <Label Text="List of Users" HorizontalTextAlignment="Center" TextColor="White" FontSize="30"/>
+                        </Frame>
+                    <BoxView HeightRequest="1" Color="Black" Margin="5, 5, 5, 10" />
+                    <SearchBar x:Name="searchBar" Placeholder="Search by Name or Username"
+                                TextChanged="searchBar_TextChanged" 
+                               />
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.EmptyView>
+                    <StackLayout>
+                        <Label Text="No list of Users to show" FontSize="Caption" FontAttributes="Bold" />
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal" Margin="10,10,2,10">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label Text="{Binding FullName}"
+                                   FontSize="Header"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="StartAndExpand" />
+                            <Label Text="{Binding PhoneNumber}" TextColor="Red"
+                                       HorizontalOptions="Start" FontSize="15" VerticalOptions="End" />
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="EndAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding UserName}"
+                                       HorizontalOptions="End" FontSize="20" />
+                                <Label Text="{Binding WebSite}" LineBreakMode="TailTruncation" TextColor="Blue"
+                                       HorizontalOptions="End" FontSize="15" VerticalOptions="End" />
+                                </StackLayout>
+                                <Label Text="{Binding EmailAddress}"
+                                       HorizontalOptions="End" FontSize="15" TextColor="Blue" VerticalOptions="End" />
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

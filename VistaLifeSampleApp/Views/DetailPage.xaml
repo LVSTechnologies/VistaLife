@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:effect="clr-namespace:VistaLifeSampleApp.Effects"
+    xmlns:behaviors="clr-namespace:VistaLifeSampleApp.Behaviors"
+    x:Class="VistaLifeSampleApp.Views.DetailPage">
+    <ContentPage.Content>
+        <StackLayout Margin="10" Spacing="20">
+            <Label Text="Detailed User Information"
+                   HorizontalOptions="Center"
+                   Margin="2,10,2, 10"
+                   FontAttributes="Bold"
+                   FontSize="28" />
+            <Label Text="{Binding UserName}" Margin="2,10,2, 20" TextColor="Red"
+                   FontSize="22" HorizontalOptions="Center" />
+             <StackLayout Orientation="Horizontal">
+                 <Label Text="Edit Full Name" TextColor="Green" />
+                 <Label Text="*" TextColor="Red" />
+             </StackLayout>
+            <Entry Placeholder="Enter Full Name" PlaceholderColor="Red" Text="{Binding FullName}"  ClearButtonVisibility="WhileEditing">
+                <Entry.Effects>
+                    <effect:EntryBorderEffect />
+                </Entry.Effects>
+            </Entry>
+            <StackLayout Orientation="Horizontal">
+                 <Label Text="Edit Email" TextColor="Green" />
+                 <Label Text="*" TextColor="Red" />
+             </StackLayout>
+            <Entry Placeholder="Enter Email address" PlaceholderColor="Red" Text="{Binding EmailAddress}"
+                   Keyboard="Email"
+                   ClearButtonVisibility="WhileEditing" >
+                <Entry.Effects>
+                    <effect:EntryBorderEffect />
+                </Entry.Effects>
+            </Entry>
+            <Label Text="Edit Phone Number" TextColor="Green" />
+            <Entry Placeholder="Enter Phone Number" Text="{Binding PhoneNumber}" ClearButtonVisibility="WhileEditing">
+                <Entry.Effects>
+                    <effect:EntryBorderEffect />
+                </Entry.Effects>
+                <Entry.Behaviors>
+                    <behaviors:NumericOnlyEntryBehaviour />
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Edit Website" TextColor="Green" />
+            <Entry Placeholder="Enter Website" Text="{Binding WebSite}" ClearButtonVisibility="WhileEditing" >
+                <Entry.Effects>
+                    <effect:EntryBorderEffect />
+                </Entry.Effects>
+            </Entry>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Cancel" TextColor="White"
+                        BackgroundColor="Gray"
+                        CornerRadius="6"
+                        Command="{Binding CancelCommand}"
+                        WidthRequest="150" />
+                <Button Text="Update" TextColor="White"
+                        IsEnabled="{Binding ButtonEnabledString,Converter={StaticResource stringtoBool}}"
+                        BackgroundColor="Blue"
+                        CornerRadius="6"
+                        WidthRequest="150"
+                        Command="{Binding UpdateCommand}"
+                        />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
